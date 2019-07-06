@@ -12,10 +12,12 @@ class RAMModule : public IMonitorModule {
 
 		long long getFreeMemory() const;
 		long long getUsedMemoty() const;
+		long long getUTotalMemory() const;
 		
 	private:
 		long long _free_memory;
 		long long _used_memory;
+		long long _total_memory;
 };
 
 #endif

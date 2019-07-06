@@ -12,7 +12,7 @@
 // class QTOut : public IMonitorDisplay {
 class QTOut {
 	public:
-		QTOut(OSInfoModule &os, HostnameModule &host, DateTimeModule &dt, CPUModule &cpu, RAMModule &ram);
+		QTOut(OSInfoModule &os, HostnameModule &host, DateTimeModule &dt, CPUModule &cpu, RAMModule &ram, NetworkModule &net);
 		~QTOut();
 //	private:
 		OSInfoModule _os;
@@ -20,6 +20,7 @@ class QTOut {
 		DateTimeModule _dt;
 		CPUModule _cpu;
 		RAMModule _ram;
+		NetworkModule _net;
 };
 
 #endif
