@@ -7,7 +7,7 @@
 #include <mach/mach_host.h>
 
 RAMModule::RAMModule() {
-
+getInfo();
 }
 
 RAMModule::~RAMModule() {

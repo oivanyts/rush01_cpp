@@ -4,11 +4,21 @@
 #include <sstream>
 
 HostnameModule::HostnameModule() {
+getInfo();
+}
+
+HostnameModule::HostnameModule(const HostnameModule &copy) {
+    *this = copy;
+}
+HostnameModule::~HostnameModule() {
 
 }
 
-HostnameModule::~HostnameModule() {
-
+HostnameModule &HostnameModule::operator = (const HostnameModule &over)
+{
+    _nameHost = over._nameHost;
+    _nameLogin = over._nameLogin;
+    return (*this);
 }
 
 std::string HostnameModule::getHost() {

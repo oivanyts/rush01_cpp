@@ -4,7 +4,7 @@
 #include <sstream>
 
 OSInfoModule::OSInfoModule() {
-
+getInfo();
 }
 
 OSInfoModule::~OSInfoModule() {

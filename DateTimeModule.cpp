@@ -3,7 +3,7 @@
 #include <ctime>
 
 DateTimeModule::DateTimeModule() {
-
+getInfo();
 }
 
 DateTimeModule::~DateTimeModule() {

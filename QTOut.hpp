@@ -5,6 +5,7 @@
 #include "HostnameModule.hpp"
 #include "NetworkModule.hpp"
 #include "RAMModule.hpp"
+#include "OSInfoModule.hpp"
 
 
 
@@ -13,13 +14,14 @@ class QTOut {
 	public:
 		QTOut(OSInfoModule &os, HostnameModule &host, DateTimeModule &dt, CPUModule &cpu, RAMModule &ram);
 		~QTOut();
-	private:
+//	private:
 		OSInfoModule _os;
 		HostnameModule _host;
 		DateTimeModule _dt;
 		CPUModule _cpu;
 		RAMModule _ram;
-		
+};
 
-}
+#endif
+
 

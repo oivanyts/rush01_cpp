@@ -11,4 +11,3 @@ QTOut::QTOut(OSInfoModule &os, HostnameModule &host, DateTimeModule &dt, CPUModu
 QTOut::~QTOut() {
 	
 }
-

@@ -14,6 +14,17 @@ CPUModule::~CPUModule() {
 	
 }
 
+CPUModule::CPUModule(const CPUModule &copy)
+{
+    *this = copy;
+}
+CPUModule& CPUModule::operator=(const CPUModule&rhs)
+{
+    _hw = rhs._hw;
+    _core = rhs._core;
+    return (*this);
+}
+
 MType CPUModule::getInfo() {
 	std::cout << std::endl;
 	std::cout << "*************** CPU MODULES ****************" << std::endl;

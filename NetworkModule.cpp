@@ -7,7 +7,7 @@
 #include <sstream>
 
 NetworkModule::NetworkModule() {
-
+getInfo();
 }
 
 NetworkModule::~NetworkModule() {
