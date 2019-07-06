@@ -5,8 +5,19 @@
 class NetworkModule : public IMonitorModule {
 	public:
 		NetworkModule();
+		NetworkModule(const NetworkModule &copy);
+		NetworkModule & operator=(const NetworkModule&);
 		~NetworkModule();
+
+		std::string getNet() const;
+
 		MType getInfo();
+
+	private:
+		std::string _net;
+
 };
 
 #endif
+
+

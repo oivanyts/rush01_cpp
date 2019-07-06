@@ -17,41 +17,41 @@ CPUModule::~CPUModule() {
 MType CPUModule::getInfo() {
 	std::cout << std::endl;
 	std::cout << "*************** CPU MODULES ****************" << std::endl;
-	char buffer[1024];
-    size_t size=sizeof(buffer);
-    if (sysctlbyname("machdep.cpu.brand_string", &buffer, &size, NULL, 0) < 0) {
+	// char _model[1024];
+    size_t size = sizeof(_model);
+    if (sysctlbyname("machdep.cpu.brand_string", &_model, &size, NULL, 0) < 0) {
         throw std::runtime_error("Fail to get CPU model");
     }
 
-	uint64_t freq = 0;
-    size = sizeof(freq);
+	// uint64_t _hw = 0;
+    size = sizeof(_hw);
 
-    if (sysctlbyname("hw.cpufrequency", &freq, &size, NULL, 0) < 0)
+    if (sysctlbyname("hw.cpufrequency", &_hw, &size, NULL, 0) < 0)
     {
     	throw std::runtime_error("Fail to get clock speed");
     }
 
-    uint64_t core = 0;
-    size = sizeof(core);
-    if (sysctlbyname("machdep.cpu.core_count", &core, &size, NULL, 0) < 0)
+    // uint64_t core = 0;
+    size = sizeof(_core);
+    if (sysctlbyname("machdep.cpu.core_count", &_core, &size, NULL, 0) < 0)
     {
     	throw std::runtime_error("Fail to get count cores");
     }
 
-    char	tmp[4096];
+    // char	_activity[4096];
 	if (FILE * stream = popen("top -l 1 -n 0 -s 0 | grep CPU", "r"))
 	{
-		fgets(tmp, sizeof(tmp), stream);
+		fgets(_activity, sizeof(_activity), stream);
 	}
 	else {
 		throw std::runtime_error("Fail to get CPU activity");
 	}
 
 	std::stringstream ss;
-	ss << "CPU model: " << buffer << std::endl
-		<< "Clock speed: " << freq << std::endl
-		<< "Count cores: " << core << std::endl
-		<< "CPU activity" << tmp << std::endl;
+	ss << "CPU model: " << _model << std::endl
+		<< "Clock speed: " << _hw << std::endl
+		<< "Count cores: " << _core << std::endl
+		<< "CPU activity" << _activity << std::endl;
 	return ss.str();
    
 }

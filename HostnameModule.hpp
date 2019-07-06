@@ -6,7 +6,18 @@ class HostnameModule : public IMonitorModule {
 	public:
 		HostnameModule();
 		~HostnameModule();
+		HostnameModule(const HostnameModule &copy);
+		HostnameModule &operator = (const HostnameModule &over);
+
+		std::string getHost();
+		std::string getUser();
+
 		MType getInfo();
+
+	private:
+		std::string _nameHost;
+		std::string _nameLogin;
 };
 
 #endif
+

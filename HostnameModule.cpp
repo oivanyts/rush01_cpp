@@ -1,6 +1,7 @@
 #include "HostnameModule.hpp"
 #include <unistd.h>
 #include <iostream>
+#include <sstream>
 
 HostnameModule::HostnameModule() {
 
@@ -10,12 +11,29 @@ HostnameModule::~HostnameModule() {
 
 }
 
+std::string HostnameModule::getHost() {
+	return this->_nameHost;
+}
+
+std::string HostnameModule::getUser() {
+	return this->_nameLogin;
+}
+
 MType HostnameModule::getInfo() {
 	std::cout << std::endl;
 	std::cout << "*************** HOSTNAME MODULE ****************" << std::endl;
-	char name[256];
-	int i = gethostname(name, 256);
-	if (i == -1)
+	char nameHost[_POSIX_HOST_NAME_MAX];
+	// char *getlogin(void);
+    // int getlogin_r(char *name, size_t namesize);
+     // int gethostname(char *name, size_t len);
+	int ihost = gethostname(nameHost, _POSIX_HOST_NAME_MAX);
+	this->_nameHost = std::string(nameHost);
+	this->_nameLogin = std::string(getlogin());
+	if (ihost == -1)
 		throw std::runtime_error("Fail to get hostname");
-	return std::string(name);
+
+	std::stringstream ss;
+	ss << "Hostname: " << _nameHost << std::endl
+		<< "Username: " << _nameLogin << std::endl;
+	return ss.str();
 }

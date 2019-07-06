@@ -11,6 +11,35 @@ OSInfoModule::~OSInfoModule() {
 
 }
 
+
+OSInfoModule::OSInfoModule(const OSInfoModule &copy) {
+    *this = copy;
+}
+
+OSInfoModule & OSInfoModule::operator=(const OSInfoModule&) {
+    return *this;
+}
+
+std::string OSInfoModule::getSys() const {
+    return this-> _sysName;
+}
+
+std::string OSInfoModule::getRelease(){
+    return this-> _releaseName;
+}
+
+int OSInfoModule::getOSVersion1() const {
+    return this->_OSVersion1;
+}
+
+int OSInfoModule::getOSVersion2() const {
+    return this->_OSVersion2;
+}
+
+int OSInfoModule::getOSVersion3() const {
+    return this->_OSVersion3;
+}
+
 int OSInfoModule::GetOSVersionComponent(int component) {
     std::cout << std::endl;
     std::cout << "*************** OS INFO MODULE ****************" << std::endl;
@@ -34,18 +63,25 @@ int OSInfoModule::GetOSVersionComponent(int component) {
 }
 
 MType OSInfoModule::getInfo() {
-	struct utsname name;
+    struct utsname name;
     uname(&name);
-	std::stringstream ss;
-	ss << "System Version: " << name.sysname 
-		<< std::endl << "Kernel Version: " 
-		<< name.release << std::endl
-		<< "OS version: " << GetOSVersionComponent(1)
-		<< "." << GetOSVersionComponent(2)
-		<< "." << GetOSVersionComponent(3)
-		<< std::endl;
 
-	return ss.str();
+    this->_releaseName = name.release;
+    this->_sysName = name.sysname;
+    this->_OSVersion1 = GetOSVersionComponent(1);
+    this->_OSVersion2 = GetOSVersionComponent(2);
+    this->_OSVersion3 = GetOSVersionComponent(3);
+
+    std::stringstream ss;
+    ss << "System Version: " << _sysName 
+        << std::endl << "Kernel Version: " 
+        << _releaseName << std::endl
+        << "OS version: " << _OSVersion1
+        << "." << _OSVersion2
+        << "." << _OSVersion3
+        << std::endl;
+
+    return ss.str();
 }
 
 

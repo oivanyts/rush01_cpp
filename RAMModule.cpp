@@ -14,6 +14,24 @@ RAMModule::~RAMModule() {
 
 }
 
+RAMModule::RAMModule(const RAMModule &copy) {
+    *this = copy;
+}
+
+
+RAMModule& RAMModule::operator=(const RAMModule&) {
+    return *this;
+}
+
+long long RAMModule::getFreeMemory() const {
+    return this->_free_memory;
+}
+
+long long RAMModule::getUsedMemoty() const {
+    return this->_used_memory;
+}
+
+
 MType RAMModule::getInfo() {
 	std::cout << std::endl;
 	std::cout << "*************** RAM MODULE ****************" << std::endl;
@@ -28,12 +46,12 @@ MType RAMModule::getInfo() {
         KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO,
                                         (host_info64_t)&vm_stats, &count))
     {
-        long long free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
+        this->_free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
 
-        long long used_memory = ((int64_t)vm_stats.active_count +
+         this->_used_memory = ((int64_t)vm_stats.active_count +
                                  (int64_t)vm_stats.inactive_count +
                                  (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
-        printf("free memory: %lld\nused memory: %lld\n", free_memory, used_memory);
+        printf("free memory: %lld\nused memory: %lld\n", _free_memory, _used_memory);
     }
     return std::string("");
     	// long long total_memory = free_memory + used_memory;
@@ -44,3 +62,22 @@ MType RAMModule::getInfo() {
     // 	// << "Total memoty: " << total_memory << std::endl;
     // return ss.str();
 }
+
+
+/******************************** COPLIEN ****************************/
+
+// RAM::RAM(void) {}
+
+// RAM::RAM(const RAM& copy) { *this = copy; }
+
+// RAM::~RAM(void) {}
+
+// RAM& RAM::operator=(const RAM&) {return *this;}
+
+
+// ******************************* Getters *******************************
+
+// unsigned long long RAM::getTotal(void) const {return this->_total;}
+// unsigned long long RAM::getUsed(void) const {return this->_used;}
+// unsigned long long RAM::getFree(void) const {return this->_free;}
+
