@@ -5,6 +5,7 @@
 #include <mach/mach_types.h>
 #include <mach/mach_init.h>
 #include <mach/mach_host.h>
+#include <sys/sysctl.h>
 
 RAMModule::RAMModule() {
 getInfo();
@@ -31,6 +32,10 @@ long long RAMModule::getUsedMemoty() const {
     return this->_used_memory;
 }
 
+long long RAMModule::getUTotalMemory() const {
+    return this->_total_memory;
+}
+
 
 MType RAMModule::getInfo() {
 	std::cout << std::endl;
@@ -51,33 +56,17 @@ MType RAMModule::getInfo() {
          this->_used_memory = ((int64_t)vm_stats.active_count +
                                  (int64_t)vm_stats.inactive_count +
                                  (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
-        printf("free memory: %lld\nused memory: %lld\n", _free_memory, _used_memory);
+         this->_total_memory = _free_memory + _used_memory;
     }
-    return std::string("");
-    	// long long total_memory = free_memory + used_memory;
-    // printf("free memory: %lld\nused memory: %lld\n", free_memory, used_memory);
-    // std::stringstream ss;
-    // ss << "Free memory: " << free_memory << std::endl
-    // 	<< "Used memoty: " << used_memory << std::endl;
-    // 	// << "Total memoty: " << total_memory << std::endl;
-    // return ss.str();
+
+    std::stringstream ss;
+    ss << "Free memory: " << _free_memory << std::endl
+        << "Used memory: " << _used_memory << std::endl
+        << "Total memory: " << _total_memory << std::endl;
+
+    return ss.str();
 }
 
 
-/******************************** COPLIEN ****************************/
 
-// RAM::RAM(void) {}
-
-// RAM::RAM(const RAM& copy) { *this = copy; }
-
-// RAM::~RAM(void) {}
-
-// RAM& RAM::operator=(const RAM&) {return *this;}
-
-
-// ******************************* Getters *******************************
-
-// unsigned long long RAM::getTotal(void) const {return this->_total;}
-// unsigned long long RAM::getUsed(void) const {return this->_used;}
-// unsigned long long RAM::getFree(void) const {return this->_free;}
 

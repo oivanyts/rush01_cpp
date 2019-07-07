@@ -40,9 +40,16 @@ int OSInfoModule::getOSVersion3() const {
     return this->_OSVersion3;
 }
 
+// int main() 
+// {
+//   cout << "Enter grades : ";
+//   string grades;
+//   getline(cin, grades);
+//   cout << "Grades are : " << grades << endl;
+//   return 0;
+// }
+
 int OSInfoModule::GetOSVersionComponent(int component) {
-    std::cout << std::endl;
-    std::cout << "*************** OS INFO MODULE ****************" << std::endl;
     char cmd[64] ;
     sprintf(
             cmd,
@@ -63,6 +70,8 @@ int OSInfoModule::GetOSVersionComponent(int component) {
 }
 
 MType OSInfoModule::getInfo() {
+    std::cout << std::endl;
+    std::cout << "*************** OS INFO MODULE ****************" << std::endl;
     struct utsname name;
     uname(&name);
 
