@@ -6,7 +6,7 @@ class NetworkModule : public IMonitorModule {
 	public:
 		NetworkModule();
 		NetworkModule(const NetworkModule &copy);
-		NetworkModule & operator=(const NetworkModule&);
+		NetworkModule & operator=(const NetworkModule &over);
 		~NetworkModule();
 
 		std::string getNet() const;

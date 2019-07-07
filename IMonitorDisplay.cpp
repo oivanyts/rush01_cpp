@@ -4,6 +4,21 @@
 IMonitorDisplay::IMonitorDisplay() {
 
 }
+
+IMonitorDisplay::IMonitorDisplay(const IMonitorDisplay &copy) {
+    *this = copy;
+}
+
+IMonitorDisplay &IMonitorDisplay::operator = (const IMonitorDisplay &over)
+{
+	_pOs = over._pOs;
+	_pHost = over._pHost;
+	_pDate = over._pDate;
+	_pCpu = over._pCpu;
+	_pRam = over._pRam;
+	_pNet = over._pNet;
+    return (*this);
+}
 //std::string IMonitorDisplay::getHostStr() const {
 //    return (_pHost.getHost() +" HERE" + _pHost.getUser());
 //}

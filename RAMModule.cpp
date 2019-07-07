@@ -20,19 +20,22 @@ RAMModule::RAMModule(const RAMModule &copy) {
 }
 
 
-RAMModule& RAMModule::operator=(const RAMModule&) {
+RAMModule& RAMModule::operator=(const RAMModule &over) {
+    _free_memory = over._free_memory;
+    _used_memory = over._used_memory;
+    _total_memory = over._total_memory;
     return *this;
 }
 
-long long RAMModule::getFreeMemory() const {
+long RAMModule::getFreeMemory() const {
     return this->_free_memory;
 }
 
-long long RAMModule::getUsedMemoty() const {
+long RAMModule::getUsedMemoty() const {
     return this->_used_memory;
 }
 
-long long RAMModule::getUTotalMemory() const {
+long RAMModule::getUTotalMemory() const {
     return this->_total_memory;
 }
 
@@ -61,7 +64,6 @@ MType RAMModule::getInfo() {
     ss << "Free memory: " << _free_memory << std::endl
         << "Used memory: " << _used_memory << std::endl
         << "Total memory: " << _total_memory << std::endl;
-//    std::cout << ss.str() << std::endl;
     return ss.str();
 }
 

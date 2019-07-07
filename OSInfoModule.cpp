@@ -16,7 +16,10 @@ OSInfoModule::OSInfoModule(const OSInfoModule &copy) {
     *this = copy;
 }
 
-OSInfoModule & OSInfoModule::operator=(const OSInfoModule&) {
+OSInfoModule & OSInfoModule::operator=(const OSInfoModule &over) {
+    _releaseName = over._releaseName;
+    _sysName = over._sysName;
+    _version = over._version;
     return *this;
 }
 

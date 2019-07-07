@@ -18,7 +18,8 @@ NetworkModule::NetworkModule(const NetworkModule &copy) {
 	*this = copy;
 }
 
-NetworkModule & NetworkModule::operator=(const NetworkModule&) {
+NetworkModule & NetworkModule::operator=(const NetworkModule &over) {
+	_net = over._net;
 	return *this;
 }
 

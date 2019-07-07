@@ -8,7 +8,7 @@ class OSInfoModule : public IMonitorModule {
 		~OSInfoModule();
 
 		OSInfoModule(const OSInfoModule &copy);
-		OSInfoModule& operator=(const OSInfoModule&);
+		OSInfoModule& operator=(const OSInfoModule &over);
 
         std::string getRelease() const;
 		std::string getSys() const;

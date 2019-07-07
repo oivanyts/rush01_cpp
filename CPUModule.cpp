@@ -91,5 +91,4 @@ std::string CPUModule::getActivity() const {
 float CPUModule::getIdleCpu() const {
 	return _idleCPU;
 }
-// sysctl -a
-// sysctl hw.cpufrequency
+

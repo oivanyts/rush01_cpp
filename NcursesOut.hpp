@@ -19,12 +19,11 @@
 
 
 class NcursesOut : public IMonitorDisplay {
-//class NcursesOut {
 	public:
         NcursesOut();
-//		NcursesOut(const NcursesOut &copy);
+		NcursesOut(const NcursesOut &copy);
+		NcursesOut &operator = (const NcursesOut &over);
 		~NcursesOut();
-//		void updateInfo();
 		std::string getDateTime() const ;
 		std::string getRamTotal() const ;
 		std::string getHostStr() const;
@@ -35,13 +34,6 @@ class NcursesOut : public IMonitorDisplay {
 
 		void 	printOut();
 private:
-//        OSInfoModule *_pOs;
-//        HostnameModule *_pHost;
-//        DateTimeModule *_pDate;
-//        CPUModule *_pCpu;
-//        RAMModule *_pRam;
-//        NetworkModule *_pNet;
-
         int			y_wmax;
 		int 		x_wmax;
 		WINDOW*		mainWin;

@@ -10,6 +10,14 @@ QTOut::~QTOut()
 //	return EXIT;
 //}
 
+QTOut::QTOut(const QTOut &copy) {
+	*this = copy;
+}
+
+QTOut & QTOut::operator = (const QTOut &over){
+	return (*this);
+}
+
 std::string QTOut::getHostStr() const {
 	return (_pHost.getHost() + "\n" + _pHost.getUser());
 }

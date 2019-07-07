@@ -18,6 +18,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(IMonitorDisplay &systemInfo, bool *NcursActive, QWidget *parent = nullptr);
     ~MainWindow();
+    MainWindow(const MainWindow &copy);
+    MainWindow &operator = (const MainWindow &over);
     void refreshWindow();
 
 

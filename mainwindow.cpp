@@ -20,6 +20,15 @@ MainWindow::~MainWindow()
     delete timer;
 }
 
+MainWindow::MainWindow(const MainWindow &copy) {
+    *this = copy;
+}
+
+MainWindow::MainWindow &operator = (const MainWindow &over) {
+    return (*this);
+}
+
+
 void MainWindow::refreshWindow()
 {
     _sysInfo.updateInfo();

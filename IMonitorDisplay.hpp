@@ -21,6 +21,8 @@ public:
     IMonitorDisplay();
 	Command    getInput() ;
 	void updateInfo();
+	IMonitorDisplay(const IMonitorDisplay &copy);
+	IMonitorDisplay &operator = (const IMonitorDisplay &over);
 
 	virtual std::string getHostStr() const = 0;
 	virtual std::string getOsStr() = 0 ;

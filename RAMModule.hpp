@@ -10,14 +10,14 @@ class RAMModule : public IMonitorModule {
 		RAMModule& operator=(const RAMModule&);
 		MType getInfo();
 
-		long long getFreeMemory() const;
-		long long getUsedMemoty() const;
-		long long getUTotalMemory() const;
+		long getFreeMemory() const;
+		long getUsedMemoty() const;
+		long getUTotalMemory() const;
 		
 	private:
-		long long _free_memory;
-		long long _used_memory;
-		long long _total_memory;
+		long _free_memory;
+		long _used_memory;
+		long _total_memory;
 };
 
 #endif

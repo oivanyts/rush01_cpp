@@ -11,7 +11,8 @@ public:
     QTOut();
     ~QTOut();
 	void 	printOut() {};
-
+	QTOut(const QTOut &copy);
+	QTOut &operator = (const QTOut &over);
 	std::string getHostStr() const;
 	std::string getOsStr() ;
 	std::string getCpuModel() const;
@@ -21,7 +22,6 @@ public:
 
 	float getCpuIdle() const;
 	Command    getInput();
-//    void updateInfo() = 0;
 private:
 
 };

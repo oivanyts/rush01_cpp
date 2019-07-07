@@ -24,19 +24,18 @@ NcursesOut::NcursesOut() {
     printStatic();
 }
 
-//NcursesOut::NcursesOut(const NcursesOut &copy)
-//{
-//	*this = copy;
-//}
+NcursesOut::NcursesOut(const NcursesOut &copy)
+{
+	*this = copy;
+}
 
-//void NcursesOut::updateInfo() {
-//	_pOs.getInfo();
-//	_pHost.getInfo();
-//	_pDate.getInfo();
-//	_pCpu.getInfo();
-//	_pRam.getInfo();
-//    _pNet.getInfo();
-//}
+NcursesOut &NcursesOut::operator = (const NcursesOut &over)
+{
+    y_wmax = over.y_wmax;
+    x_wmax = over.x_wmax;
+    mainWin = over.mainWin;
+    return (*this);
+}
 std::string NcursesOut::getHostStr() const {
 	return ("Host name : " + _pHost.getHost());
 }

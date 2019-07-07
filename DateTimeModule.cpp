@@ -13,7 +13,9 @@ DateTimeModule::DateTimeModule(DateTimeModule const &copy) {
 	*this = copy;
 }
 
-DateTimeModule & DateTimeModule::operator=(DateTimeModule const &) {
+DateTimeModule & DateTimeModule::operator=(DateTimeModule const &over) {
+    _dt = over._dt;
+    _time = over._time;
 	return *this;
 }
 
