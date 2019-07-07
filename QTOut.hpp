@@ -6,20 +6,26 @@
 #include "NetworkModule.hpp"
 #include "RAMModule.hpp"
 #include "OSInfoModule.hpp"
+//#include "IMonitorDisplay.hpp"
 
 
 
 // class QTOut : public IMonitorDisplay {
 class QTOut {
 	public:
-		QTOut(OSInfoModule &os, HostnameModule &host, DateTimeModule &dt, CPUModule &cpu, RAMModule &ram);
+        QTOut();
 		~QTOut();
-//	private:
-		OSInfoModule _os;
-		HostnameModule _host;
-		DateTimeModule _dt;
-		CPUModule _cpu;
-		RAMModule _ram;
+		void updateInfo();
+	std::string getHostStr() const;
+	std::string getOsStr() const;
+	std::string getCpuModel() const;
+	float getCpuIdle() const;
+private:
+        OSInfoModule *_pOs;
+        HostnameModule *_pHost;
+        DateTimeModule *_pDate;
+        CPUModule *_pCpu;
+        RAMModule *_pRam;
 };
 
 #endif

@@ -9,19 +9,21 @@ class CPUModule : public IMonitorModule {
 		CPUModule& operator=(const CPUModule&);
 		~CPUModule();
 
-		char getModel() const;
+		std::string getModel() const;
 		uint64_t hatHW() const;
-		uint64_t getCore() const;
-		char getActivity() const;
+		int getCore();
+		std::string getActivity() const;
+	float getIdleCpu() const;
 
-		MType getInfo();
+	MType getInfo();
 
-	private:
-		char _model[1024];
+	protected:
 		uint64_t _hw;
 		uint64_t _core;
 		char	_activity[4096];
 
+        std::string _modelReal;
+		float 	_idleCPU;
 };
 
 #endif
