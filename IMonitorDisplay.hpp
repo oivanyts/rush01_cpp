@@ -13,10 +13,11 @@ class IMonitorDisplay
 {
 public:
     IMonitorDisplay();
-    std::string getHostStr();
-    std::string getOsStr();
-    std::string getCpuModel();
-	float getCpuIdle();
+    std::string getHostStr() const;
+    std::string getOsStr() ;
+    std::string getCpuModel() const;
+    std::string getDateTime() const;
+    float getCpuIdle() const ;
 	void updateInfo();
     virtual ~IMonitorDisplay() {}
 

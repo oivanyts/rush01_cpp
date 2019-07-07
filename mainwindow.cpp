@@ -25,7 +25,7 @@ void MainWindow::refreshWindow()
     _sysInfo.updateInfo();
     ui->labelHostName->setText(QString::fromStdString(_sysInfo.getHostStr()));
     ui->labelOsInfo->setText(QString::fromStdString(_sysInfo.getOsStr()));
-    ui->labelDateTime->setText(QString::fromStdString("TIME"));
+    ui->labelDateTime->setText(QString::fromStdString(_sysInfo.getDateTime()));
     ui->labelCPU->setText(QString::fromStdString(_sysInfo.getCpuModel()));
     ui->cpuProgressBar->setTextVisible(true);
 

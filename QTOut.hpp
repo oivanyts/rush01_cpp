@@ -7,11 +7,10 @@
 
 
 class QTOut : public IMonitorDisplay {
-	public:
-        QTOut();
-		~QTOut();
-		void updateInfo();
-
+public:
+    QTOut();
+    ~QTOut();
+    void updateInfo();
 private:
 
 };

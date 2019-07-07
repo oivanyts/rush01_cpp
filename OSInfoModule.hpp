@@ -10,7 +10,7 @@ class OSInfoModule : public IMonitorModule {
 		OSInfoModule(const OSInfoModule &copy);
 		OSInfoModule& operator=(const OSInfoModule&);
 
-		std::string getRelease();
+        std::string getRelease() const;
 		std::string getSys() const;
 		int getOSVersion1() const;
 		int getOSVersion2() const;

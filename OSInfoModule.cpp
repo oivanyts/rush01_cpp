@@ -24,7 +24,7 @@ std::string OSInfoModule::getSys() const {
     return this-> _sysName;
 }
 
-std::string OSInfoModule::getRelease(){
+std::string OSInfoModule::getRelease() const{
     return this-> _releaseName;
 }
 
@@ -65,7 +65,6 @@ int OSInfoModule::GetOSVersionComponent(int component) {
         pclose(stdoutFile) ;
         sscanf(stdout, "%d", &answer) ;
     }
-
     return answer ;
 }
 

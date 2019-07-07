@@ -21,7 +21,7 @@ HostnameModule &HostnameModule::operator = (const HostnameModule &over)
     return (*this);
 }
 
-std::string HostnameModule::getHost() {
+std::string HostnameModule::getHost() const {
 	return this->_nameHost;
 }
 

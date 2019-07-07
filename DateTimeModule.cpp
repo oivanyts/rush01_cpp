@@ -3,7 +3,6 @@
 #include <ctime>
 
 DateTimeModule::DateTimeModule() {
-getInfo();
 }
 
 DateTimeModule::~DateTimeModule() {
@@ -23,11 +22,17 @@ std::string DateTimeModule::getDateTime() const {
 }
 
 MType DateTimeModule::getInfo() {
-	std::cout << std::endl;
+    std::cout << std::endl;
 	std::cout << "*************** DATE/TIME MODULES ****************" << std::endl;
-	time_t now = time(0);
-   
-   	char* _dt = ctime(&now);
-	return std::string(_dt);
+    time_t rawtime;
+    struct tm * timeinfo;
+    char buffer[80];
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+    strftime(buffer,sizeof(buffer),"%d-%m-%Y %H:%M:%S",timeinfo);
+    std::string tmp(buffer);
+    _dt = tmp;
+    return tmp;
 }
 
