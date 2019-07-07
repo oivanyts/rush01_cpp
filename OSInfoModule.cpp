@@ -28,65 +28,34 @@ std::string OSInfoModule::getRelease() const{
     return this-> _releaseName;
 }
 
-int OSInfoModule::getOSVersion1() const {
-    return this->_OSVersion1;
+std::string OSInfoModule::getVersion() const {
+    return this->_version;
 }
 
-int OSInfoModule::getOSVersion2() const {
-    return this->_OSVersion2;
-}
 
-int OSInfoModule::getOSVersion3() const {
-    return this->_OSVersion3;
-}
-
-// int main() 
-// {
-//   cout << "Enter grades : ";
-//   string grades;
-//   getline(cin, grades);
-//   cout << "Grades are : " << grades << endl;
-//   return 0;
-// }
-
-int OSInfoModule::GetOSVersionComponent(int component) {
+std::string OSInfoModule::GetOSVersionComponent() {
     char cmd[64] ;
-    sprintf(
-            cmd,
-            "sw_vers -productVersion | awk -F '.' '{print $%d}'",
-            component
-    ) ;
-    FILE* stdoutFile = popen(cmd, "r") ;
-
-    int answer = 0 ;
-    if (stdoutFile) {
-        char buff[16] ;
-        char *stdout = fgets(buff, sizeof(buff), stdoutFile) ;
-        pclose(stdoutFile) ;
-        sscanf(stdout, "%d", &answer) ;
+    if (FILE * stream = popen("sw_vers -productVersion", "r"))
+    {
+        fgets(cmd, sizeof(cmd), stream);
+        pclose(stream);
     }
-    return answer ;
+    return std::string(cmd);
 }
 
 MType OSInfoModule::getInfo() {
-    std::cout << std::endl;
-    std::cout << "*************** OS INFO MODULE ****************" << std::endl;
     struct utsname name;
     uname(&name);
 
     this->_releaseName = name.release;
     this->_sysName = name.sysname;
-    this->_OSVersion1 = GetOSVersionComponent(1);
-    this->_OSVersion2 = GetOSVersionComponent(2);
-    this->_OSVersion3 = GetOSVersionComponent(3);
+    this->_version = GetOSVersionComponent();
 
     std::stringstream ss;
-    ss << "System Version: " << _sysName 
+     ss << "System Version: " << _sysName 
         << std::endl << "Kernel Version: " 
         << _releaseName << std::endl
-        << "OS version: " << _OSVersion1
-        << "." << _OSVersion2
-        << "." << _OSVersion3
+        << "OS version: " << _version
         << std::endl;
 
     return ss.str();

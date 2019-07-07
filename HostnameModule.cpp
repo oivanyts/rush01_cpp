@@ -30,12 +30,7 @@ std::string HostnameModule::getUser() {
 }
 
 MType HostnameModule::getInfo() {
-	std::cout << std::endl;
-	std::cout << "*************** HOSTNAME MODULE ****************" << std::endl;
 	char nameHost[_POSIX_HOST_NAME_MAX];
-	// char *getlogin(void);
-    // int getlogin_r(char *name, size_t namesize);
-     // int gethostname(char *name, size_t len);
 	int ihost = gethostname(nameHost, _POSIX_HOST_NAME_MAX);
 	this->_nameHost = std::string(nameHost);
 	this->_nameLogin = std::string(getlogin());

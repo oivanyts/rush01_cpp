@@ -50,12 +50,10 @@ CPUModule& CPUModule::operator=(const CPUModule&rhs)
 }
 
 MType CPUModule::getInfo() {
-	std::cout << std::endl;
-    std::cout << "*************** CPU MODULES ****************" << std::endl;
-
     if (FILE * stream = popen("top -l 1 -n 0 -s 0 | grep CPU | awk '{print$7}'", "r"))
     {
         fscanf(stream, "%f", &_idleCPU);
+        pclose(stream);
 	}
 	else {
 		throw std::runtime_error("Fail to get CPU activity");
@@ -79,11 +77,13 @@ int CPUModule::getCore() {
 	if (FILE * stream = popen("top -l 1 -n 0 -s 0 | grep CPU | awk '{print$7}'", "r"))
 	{
 		fscanf(stream, "%f", &_idleCPU);
+        pclose(stream);
 	}
 	else {
 		throw std::runtime_error("Fail to get CPU activity");
 	}
-    return (static_cast<int>(_idleCPU));
+    // return (static_cast<int>(_idleCPU));
+    return _core;
 }
 std::string CPUModule::getActivity() const {
 	std::string ret = _activity;

@@ -21,9 +21,3 @@ class RAMModule : public IMonitorModule {
 };
 
 #endif
-
-
-
-		// unsigned long long getTotal(void) const;
-		// unsigned long long getUsed(void) const;
-		// unsigned long long getFree(void) const;

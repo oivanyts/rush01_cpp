@@ -5,6 +5,14 @@
 #include "CPUModule.hpp"
 #include "RAMModule.hpp"
 #include "NetworkModule.hpp"
+#include "NcursesOut.hpp"
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <iostream>
+#include <sys/param.h>
+#include <sys/sysctl.h>
+#include <ncurses.h>
 
 int main() {
 	HostnameModule hostnameModule;
@@ -20,6 +28,9 @@ int main() {
 	std::cout << cpuModule.getInfo() << std::endl;
 	std::cout << ramModule.getInfo() << std::endl;
 	std::cout << networkModule.getInfo() << std::endl;
+
+	NcursesOut 	visualMode;
+	visualMode.printOut();
 
 	return 0;
 }

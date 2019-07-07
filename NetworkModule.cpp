@@ -27,15 +27,12 @@ std::string NetworkModule::getNet() const {
 }
 
 MType NetworkModule::getInfo() {
-	std::cout << std::endl;
-	std::cout << "*************** NETWORK MODULES ****************" << std::endl;
-
-
 	char tmpBuf[256];
 	std::string tmp;
 	if (FILE * stream = popen("top -l 1 | grep Network", "r"))
 	{
 		fgets(tmpBuf, sizeof(tmpBuf), stream);
+		pclose(stream);
 	}
 	else {
 		throw std::runtime_error("Fail to get network module");

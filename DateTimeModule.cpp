@@ -22,8 +22,6 @@ std::string DateTimeModule::getDateTime() const {
 }
 
 MType DateTimeModule::getInfo() {
-    std::cout << std::endl;
-	std::cout << "*************** DATE/TIME MODULES ****************" << std::endl;
     time_t rawtime;
     struct tm * timeinfo;
     char buffer[80];

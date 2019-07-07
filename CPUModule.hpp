@@ -13,9 +13,9 @@ class CPUModule : public IMonitorModule {
 		uint64_t hatHW() const;
 		int getCore();
 		std::string getActivity() const;
-	float getIdleCpu() const;
+		float getIdleCpu() const;
 
-	MType getInfo();
+		MType getInfo();
 
 	protected:
 		uint64_t _hw;

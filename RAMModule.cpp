@@ -38,8 +38,6 @@ long long RAMModule::getUTotalMemory() const {
 
 
 MType RAMModule::getInfo() {
-	std::cout << std::endl;
-	std::cout << "*************** RAM MODULE ****************" << std::endl;
 	vm_size_t page_size;
     mach_port_t mach_port;
     mach_msg_type_number_t count;

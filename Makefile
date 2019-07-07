@@ -6,6 +6,7 @@ SRC :=  CPUModule.cpp \
         NetworkModule.cpp \
         OSInfoModule.cpp \
         RAMModule.cpp \
+        NcursesOut.cpp \
         main.cpp \
 
 SRC := $(addprefix $(SRC_DIR), $(SRC))
