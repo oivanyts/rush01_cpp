@@ -6,6 +6,7 @@
 #include "RAMModule.hpp"
 #include "NetworkModule.hpp"
 #include "NcursesOut.hpp"
+#include "IMonitorDisplay.hpp"
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -29,8 +30,8 @@ int main() {
 //	std::cout << ramModule.getInfo() << std::endl;
 //	std::cout << networkModule.getInfo() << std::endl;
 
-	NcursesOut 	visualMode;
-	visualMode.printOut();
+	IMonitorDisplay *visualMode = new NcursesOut();
+	visualMode->printOut();
 
 	return 0;
 }

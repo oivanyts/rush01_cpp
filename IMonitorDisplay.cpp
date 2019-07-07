@@ -23,6 +23,11 @@ std::string IMonitorDisplay::getRamTotal() const {
 std::string IMonitorDisplay::getDateTime() const {
     return (_pDate.getDateTime() + "\n" +_pDate.getTime());
 }
+
+std::string IMonitorDisplay::getNet() const {
+	return ("NET: " + _pNet.getNet());
+}
+
 float IMonitorDisplay::getCpuIdle() const {
 	return _pCpu.getIdleCpu();
 }
@@ -33,4 +38,5 @@ void IMonitorDisplay::updateInfo() {
 	_pDate.getInfo();
 	_pCpu.getInfo();
 	_pRam.getInfo();
+	_pNet.getInfo();
 }

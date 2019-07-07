@@ -8,6 +8,7 @@ SRC :=  CPUModule.cpp \
         RAMModule.cpp \
         NcursesOut.cpp \
         main.cpp \
+        IMonitorDisplay.cpp \
 
 SRC := $(addprefix $(SRC_DIR), $(SRC))
 OBJ := $(subst $(SRC_DIR), $(OBJ_DIR), $(SRC:.cpp=.o))

@@ -7,7 +7,7 @@
 #include "RAMModule.hpp"
 #include "OSInfoModule.hpp"
 
-//#include "IMonitorDisplay.hpp"
+#include "IMonitorDisplay.hpp"
 
 # include <iostream>
 # include <ctime>
@@ -20,26 +20,27 @@
 
 
 
-// class NcursesOut : public IMonitorDisplay {
-class NcursesOut {
+ class NcursesOut : public IMonitorDisplay {
+//class NcursesOut {
 	public:
         NcursesOut();
+//		NcursesOut(const NcursesOut &copy);
 		~NcursesOut();
 		void updateInfo();
 		std::string getHostStr() const;
-		std::string getOsStr() const;
+		std::string getOsStr() ; //
 		std::string getCpuModel() const;
 		std::string getNet() const;
 		float getCpuIdle() const;
 
 		void 	printOut();
 private:
-        OSInfoModule *_pOs;
-        HostnameModule *_pHost;
-        DateTimeModule *_pDate;
-        CPUModule *_pCpu;
-        RAMModule *_pRam;
-        NetworkModule *_pNet;
+//        OSInfoModule *_pOs;
+//        HostnameModule *_pHost;
+//        DateTimeModule *_pDate;
+//        CPUModule *_pCpu;
+//        RAMModule *_pRam;
+//        NetworkModule *_pNet;
 
         int			y_wmax;
 		int 		x_wmax;

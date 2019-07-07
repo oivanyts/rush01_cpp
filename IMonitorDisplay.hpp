@@ -9,8 +9,7 @@
 #include "OSInfoModule.hpp"
 #include "CPUModule.hpp"
 
-class IMonitorDisplay
-{
+class IMonitorDisplay {
 public:
     IMonitorDisplay();
     std::string getHostStr() const;
@@ -18,10 +17,13 @@ public:
     std::string getCpuModel() const;
     std::string getDateTime() const;
     std::string getRamTotal() const;
+	std::string getNet() const ;
 
     float getCpuIdle() const ;
 	void updateInfo();
     virtual ~IMonitorDisplay() {}
+
+	virtual void 	printOut() {};
 
 protected:
     OSInfoModule _pOs;
@@ -29,6 +31,7 @@ protected:
     DateTimeModule _pDate;
     CPUModule _pCpu;
     RAMModule _pRam;
+	NetworkModule _pNet;
 
 };
 
