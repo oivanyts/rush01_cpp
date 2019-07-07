@@ -25,7 +25,7 @@ std::string HostnameModule::getHost() const {
 	return this->_nameHost;
 }
 
-std::string HostnameModule::getUser() {
+std::string HostnameModule::getUser() const{
 	return this->_nameLogin;
 }
 

@@ -3,16 +3,7 @@
 NcursesOut::NcursesOut() {
     int x;
     int y;
-
-//    this->_pOs = new OSInfoModule;
-//    this->_pHost = new HostnameModule;
-//    this->_pDate = new DateTimeModule;
-//    this->_pCpu = new CPUModule;
-//    this->_pRam = new RAMModule;
-//    this->_pNet = new NetworkModule;
-
-
-    initscr(); 
+    initscr();
     cbreak(); 
     noecho(); 
     curs_set(0);
@@ -38,14 +29,14 @@ NcursesOut::NcursesOut() {
 //	*this = copy;
 //}
 
-void NcursesOut::updateInfo() {
-	_pOs.getInfo();
-	_pHost.getInfo();
-	_pDate.getInfo();
-	_pCpu.getInfo();
-	_pRam.getInfo();
-    _pNet.getInfo();
-}
+//void NcursesOut::updateInfo() {
+//	_pOs.getInfo();
+//	_pHost.getInfo();
+//	_pDate.getInfo();
+//	_pCpu.getInfo();
+//	_pRam.getInfo();
+//    _pNet.getInfo();
+//}
 std::string NcursesOut::getHostStr() const {
 	return ("Host name : " + _pHost.getHost());
 }
@@ -59,18 +50,6 @@ std::string NcursesOut::getNet() const {
     return ("NET: " + _pNet.getNet());
 }
 
-Command    NcursesOut::getInput() {
-    int g = getch();
-    switch (g) {
-        case ' ':
-            return SPACE;
-        case 'q':
-            return EXIT;
-        default:
-            return UNKNOWN;
-    }
-    return UNKNOWN;
-}
 
 void    NcursesOut::printOut() {
         this->_pRam.getInfo();
@@ -183,4 +162,13 @@ NcursesOut::~NcursesOut() {
     system ("reset");
     delwin(mainWin);
     endwin();
+}
+std::string NcursesOut::getDateTime() const {
+	return std::string();
+}
+std::string NcursesOut::getRamTotal() const {
+	return std::string();
+}
+float NcursesOut::getCpuIdle() const {
+	return _pCpu.getIdleCpu();
 }

@@ -16,12 +16,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(IMonitorDisplay &systemInfo, QWidget *parent = nullptr);
+    explicit MainWindow(IMonitorDisplay &systemInfo, bool *NcursActive, QWidget *parent = nullptr);
     ~MainWindow();
     void refreshWindow();
 
-private slots:
-    void on_switchButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -33,6 +31,7 @@ private:
     DateTimeModule dateTimeModule;
     CPUModule cpuModule;
     RAMModule ramModule;
+    bool	*_ncActive;
 
 };
 

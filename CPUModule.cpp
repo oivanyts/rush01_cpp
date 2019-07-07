@@ -28,6 +28,14 @@ CPUModule::CPUModule() {
         throw std::runtime_error("Fail to get count cores");
     }
 
+    if (FILE * stream = popen("top -l 1 -n 0 -s 0 | grep CPU | awk '{print$7}'", "r"))
+    {
+        fscanf(stream, "%f", &_idleCPU);
+        pclose(stream);
+    }
+    else {
+        throw std::runtime_error("Fail to get CPU activity");
+    }
     clock << model;
     _modelReal = clock.str();
 }
@@ -73,16 +81,7 @@ std::string CPUModule::getModel() const {
 uint64_t CPUModule::hatHW() const {
 	return _hw;
 }
-int CPUModule::getCore() {
-	if (FILE * stream = popen("top -l 1 -n 0 -s 0 | grep CPU | awk '{print$7}'", "r"))
-	{
-		fscanf(stream, "%f", &_idleCPU);
-        pclose(stream);
-	}
-	else {
-		throw std::runtime_error("Fail to get CPU activity");
-	}
-    // return (static_cast<int>(_idleCPU));
+int CPUModule::getCore() const {
     return _core;
 }
 std::string CPUModule::getActivity() const {

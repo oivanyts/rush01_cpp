@@ -10,7 +10,7 @@ class HostnameModule : public IMonitorModule {
 		HostnameModule &operator = (const HostnameModule &over);
 
         std::string getHost() const;
-		std::string getUser();
+		std::string getUser() const;
 
 		MType getInfo();
 

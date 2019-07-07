@@ -11,7 +11,7 @@ class CPUModule : public IMonitorModule {
 
 		std::string getModel() const;
 		uint64_t hatHW() const;
-		int getCore();
+        int getCore() const;
 		std::string getActivity() const;
 		float getIdleCpu() const;
 
@@ -19,7 +19,7 @@ class CPUModule : public IMonitorModule {
 
 	protected:
 		uint64_t _hw;
-		uint64_t _core;
+        int _core;
 		char	_activity[4096];
 
         std::string _modelReal;

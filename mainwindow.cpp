@@ -3,8 +3,8 @@
 #include "QTOut.hpp"
 
 
-MainWindow::MainWindow(IMonitorDisplay &systemInfo, QWidget *parent) : QMainWindow(parent),
-    ui(new Ui::MainWindow), _sysInfo(systemInfo)
+MainWindow::MainWindow(IMonitorDisplay &systemInfo, bool *NcursActive, QWidget *parent) : QMainWindow(parent),
+    ui(new Ui::MainWindow), _sysInfo(systemInfo), _ncActive(NcursActive)
 {
     timer = new QTimer(this);
     timer->setInterval(1000);
@@ -33,8 +33,7 @@ void MainWindow::refreshWindow()
     ui->cpuProgressBar->setValue(100 - static_cast<int>(_sysInfo.getCpuIdle()));
 }
 
-void MainWindow::on_switchButton_clicked()
-{
 
-}
-
+/*
+ * ./CLionProjects/build-rush01-Desktop_Qt_5_13_0_clang_64bit-Debug/rush01.app/Contents/MacOS/rush01
+ */

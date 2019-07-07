@@ -18,16 +18,15 @@
 # include <ncurses.h>
 
 
-
-
-
- class NcursesOut : public IMonitorDisplay {
+class NcursesOut : public IMonitorDisplay {
 //class NcursesOut {
 	public:
         NcursesOut();
 //		NcursesOut(const NcursesOut &copy);
 		~NcursesOut();
-		void updateInfo();
+//		void updateInfo();
+		std::string getDateTime() const ;
+		std::string getRamTotal() const ;
 		std::string getHostStr() const;
 		std::string getOsStr() ; //
 		std::string getCpuModel() const;
@@ -35,7 +34,6 @@
 		float getCpuIdle() const;
 
 		void 	printOut();
-		Command    getInput();
 private:
 //        OSInfoModule *_pOs;
 //        HostnameModule *_pHost;

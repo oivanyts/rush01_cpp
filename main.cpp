@@ -18,12 +18,12 @@
 #include <ncurses.h>
 
 int main() {
-	HostnameModule hostnameModule;
-	OSInfoModule osInfoModule;
-	DateTimeModule dateTimeModule;
-	CPUModule cpuModule;
-	RAMModule ramModule;
-	NetworkModule networkModule;
+//	HostnameModule hostnameModule;
+//	OSInfoModule osInfoModule;
+//	DateTimeModule dateTimeModule;
+//	CPUModule cpuModule;
+//	RAMModule ramModule;
+//	NetworkModule networkModule;
 //
 //	std::cout << hostnameModule.getInfo() << std::endl;
 //	std::cout << osInfoModule.getInfo() << std::endl;
@@ -34,15 +34,15 @@ int main() {
 
 	IMonitorDisplay *visualMode = new NcursesOut();
 	bool isNcurses = true;
-
+	Command command;
 	while (true) {
 		visualMode->printOut();
-		Command command = visualMode->getInput();
+		command = visualMode->getInput();
 		if (command == SPACE) {
 			// delete(visualMode);
 			if (isNcurses) {
 				// visualMode = new QTOut();
-				std::cout << "Call graphical" << std::endl;
+//				std::cout << "Call graphical" << std::endl;
 				isNcurses = false;
 			}
 			else {
@@ -53,7 +53,7 @@ int main() {
 		else if (command == EXIT) {
 			delete(visualMode);
 			break;
-		} 
+		}
 	}
 
 	return 0;
