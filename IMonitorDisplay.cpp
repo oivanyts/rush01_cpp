@@ -9,15 +9,19 @@ std::string IMonitorDisplay::getHostStr() const {
 }
 
 std::string IMonitorDisplay::getOsStr() { // add  const
-    return ("Version " + _pOs.getInfo());
+    return (_pOs.getInfo());
 }
 
 std::string IMonitorDisplay::getCpuModel()  const{
-	return ("CPU: " + _pCpu.getModel());
+    return (_pCpu.getModel());
+}
+
+std::string IMonitorDisplay::getRamTotal() const {
+    return (std::to_string(_pRam.getUTotalMemory()));
 }
 
 std::string IMonitorDisplay::getDateTime() const {
-    return (_pDate.getDateTime());
+    return (_pDate.getDateTime() + "\n" +_pDate.getTime());
 }
 float IMonitorDisplay::getCpuIdle() const {
 	return _pCpu.getIdleCpu();

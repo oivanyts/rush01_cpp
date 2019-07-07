@@ -8,8 +8,6 @@ int main(int argc, char *argv[])
     IMonitorDisplay *qtGeneral = new QTOut();
 
     MainWindow w(*qtGeneral);
-
-
     w.show();
     return a.exec();
 }

@@ -21,6 +21,10 @@ std::string DateTimeModule::getDateTime() const {
 	return this->_dt;
 }
 
+std::string DateTimeModule::getTime() const {
+    return this->_time;
+}
+
 MType DateTimeModule::getInfo() {
     time_t rawtime;
     struct tm * timeinfo;
@@ -28,9 +32,12 @@ MType DateTimeModule::getInfo() {
 
     time (&rawtime);
     timeinfo = localtime(&rawtime);
-    strftime(buffer,sizeof(buffer),"%d-%m-%Y %H:%M:%S",timeinfo);
+    strftime(buffer,sizeof(buffer),"%d-%m-%Y",timeinfo);
     std::string tmp(buffer);
     _dt = tmp;
+    strftime(buffer,sizeof(buffer),"%H:%M:%S",timeinfo);
+    std::string tmp1(buffer);
+    _time = tmp1;
     return tmp;
 }
 

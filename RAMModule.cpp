@@ -61,7 +61,7 @@ MType RAMModule::getInfo() {
     ss << "Free memory: " << _free_memory << std::endl
         << "Used memory: " << _used_memory << std::endl
         << "Total memory: " << _total_memory << std::endl;
-
+//    std::cout << ss.str() << std::endl;
     return ss.str();
 }
 

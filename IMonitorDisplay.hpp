@@ -17,6 +17,8 @@ public:
     std::string getOsStr() ;
     std::string getCpuModel() const;
     std::string getDateTime() const;
+    std::string getRamTotal() const;
+
     float getCpuIdle() const ;
 	void updateInfo();
     virtual ~IMonitorDisplay() {}

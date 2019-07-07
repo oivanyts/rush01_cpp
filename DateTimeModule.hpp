@@ -10,11 +10,13 @@ class DateTimeModule : public IMonitorModule {
 		~DateTimeModule();
 
 		std::string getDateTime() const;
+        std::string getTime() const;
 
 		MType getInfo();
 		
 	private:
 		std::string _dt;
+        std::string _time;
 
 };
 

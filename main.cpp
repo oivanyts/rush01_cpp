@@ -21,13 +21,13 @@ int main() {
 	CPUModule cpuModule;
 	RAMModule ramModule;
 	NetworkModule networkModule;
-
-	std::cout << hostnameModule.getInfo() << std::endl;
-	std::cout << osInfoModule.getInfo() << std::endl;
-	std::cout << dateTimeModule.getInfo() << std::endl;
-	std::cout << cpuModule.getInfo() << std::endl;
-	std::cout << ramModule.getInfo() << std::endl;
-	std::cout << networkModule.getInfo() << std::endl;
+//
+//	std::cout << hostnameModule.getInfo() << std::endl;
+//	std::cout << osInfoModule.getInfo() << std::endl;
+//	std::cout << dateTimeModule.getInfo() << std::endl;
+//	std::cout << cpuModule.getInfo() << std::endl;
+//	std::cout << ramModule.getInfo() << std::endl;
+//	std::cout << networkModule.getInfo() << std::endl;
 
 	NcursesOut 	visualMode;
 	visualMode.printOut();
