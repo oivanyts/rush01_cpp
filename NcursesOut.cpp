@@ -59,8 +59,20 @@ std::string NcursesOut::getNet() const {
     return ("NET: " + _pNet.getNet());
 }
 
+Command    NcursesOut::getInput() {
+    int g = getch();
+    switch (g) {
+        case ' ':
+            return SPACE;
+        case 'q':
+            return EXIT;
+        default:
+            return UNKNOWN;
+    }
+    return UNKNOWN;
+}
+
 void    NcursesOut::printOut() {
-    while(true) {
         this->_pRam.getInfo();
         this->_pDate.getInfo();
         this->_pNet.getInfo();
@@ -68,14 +80,6 @@ void    NcursesOut::printOut() {
 
         printRam();
         printStatic();
-
-        if (getch() == 'q') {
-            delwin(mainWin);
-            endwin();
-            exit(0);
-        }
-    }
-
 }
 
 void                    NcursesOut::printRam() {

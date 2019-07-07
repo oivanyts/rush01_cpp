@@ -6,6 +6,7 @@
 #include "NetworkModule.hpp"
 #include "RAMModule.hpp"
 #include "OSInfoModule.hpp"
+#include "Common.hpp"
 
 #include "IMonitorDisplay.hpp"
 
@@ -34,6 +35,7 @@
 		float getCpuIdle() const;
 
 		void 	printOut();
+		Command    getInput();
 private:
 //        OSInfoModule *_pOs;
 //        HostnameModule *_pHost;

@@ -8,6 +8,7 @@
 #include "RAMModule.hpp"
 #include "OSInfoModule.hpp"
 #include "CPUModule.hpp"
+#include "Common.hpp"
 
 class IMonitorDisplay {
 public:
@@ -24,6 +25,7 @@ public:
     virtual ~IMonitorDisplay() {}
 
 	virtual void 	printOut() {};
+    virtual Command    getInput() = 0;
 
 protected:
     OSInfoModule _pOs;

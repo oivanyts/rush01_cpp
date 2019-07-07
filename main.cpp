@@ -7,6 +7,8 @@
 #include "NetworkModule.hpp"
 #include "NcursesOut.hpp"
 #include "IMonitorDisplay.hpp"
+#include "Common.hpp"
+#include "QTOut.hpp"
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -31,7 +33,28 @@ int main() {
 //	std::cout << networkModule.getInfo() << std::endl;
 
 	IMonitorDisplay *visualMode = new NcursesOut();
-	visualMode->printOut();
+	bool isNcurses = true;
+
+	while (true) {
+		visualMode->printOut();
+		Command command = visualMode->getInput();
+		if (command == SPACE) {
+			// delete(visualMode);
+			if (isNcurses) {
+				// visualMode = new QTOut();
+				std::cout << "Call graphical" << std::endl;
+				isNcurses = false;
+			}
+			else {
+				visualMode = new NcursesOut();
+				isNcurses = true;
+			}
+		}
+		else if (command == EXIT) {
+			delete(visualMode);
+			break;
+		} 
+	}
 
 	return 0;
 }
