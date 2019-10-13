@@ -1,6 +1,7 @@
 #include "NcursesOut.hpp"
 
-NcursesOut::NcursesOut() {
+NcursesOut::NcursesOut()
+{
     int x;
     int y;
     initscr();
@@ -23,12 +24,16 @@ NcursesOut::NcursesOut() {
     mainWin = newwin(this->y_wmax - 1, this->x_wmax - 1, 0, 0);
     printStatic();
 }
-
+NcursesOut::~NcursesOut()
+{
+    system ("reset");
+    delwin(mainWin);
+    endwin();
+}
 NcursesOut::NcursesOut(const NcursesOut &copy)
 {
 	*this = copy;
 }
-
 NcursesOut &NcursesOut::operator = (const NcursesOut &over)
 {
     y_wmax = over.y_wmax;
@@ -36,30 +41,33 @@ NcursesOut &NcursesOut::operator = (const NcursesOut &over)
     mainWin = over.mainWin;
     return (*this);
 }
-std::string NcursesOut::getHostStr() const {
-	return ("Host name : " + _pHost.getHost());
+Command   NcursesOut::getInput()
+{
+	int g = getch();
+	switch (g) {
+		case ' ':
+			return SPACE;
+		case 'q':
+			return EXIT;
+		default:
+			return UNKNOWN;
+	}
+	return UNKNOWN;
 }
-std::string NcursesOut::getOsStr()  {// const
-	return ("Version " + _pOs.getInfo());
+void NcursesOut::updateInfo()
+{
+	_pOs.getInfo();
+	_pHost.getInfo();
+	_pDate.getInfo();
+	_pCpu.getInfo();
+	_pRam.getInfo();
+	_pNet.getInfo();
 }
-std::string NcursesOut::getCpuModel() const {
-	return ("CPU: " + _pCpu.getModel());
+void    NcursesOut::printOut()
+{
+    printStatic();
+    printRam();
 }
-std::string NcursesOut::getNet() const {
-    return ("NET: " + _pNet.getNet());
-}
-
-
-void    NcursesOut::printOut() {
-        this->_pRam.getInfo();
-        this->_pDate.getInfo();
-        this->_pNet.getInfo();
-        this->_pCpu.getInfo();
-
-        printRam();
-        printStatic();
-}
-
 void                    NcursesOut::printRam() {
     int size = 25;
 
@@ -157,17 +165,3 @@ void                NcursesOut::printStatic() {
     mvwprintw(mainWin, 18, size, "%i", this->_pCpu.getCore());
 }
 
-NcursesOut::~NcursesOut() {
-    system ("reset");
-    delwin(mainWin);
-    endwin();
-}
-std::string NcursesOut::getDateTime() const {
-	return std::string();
-}
-std::string NcursesOut::getRamTotal() const {
-	return std::string();
-}
-float NcursesOut::getCpuIdle() const {
-	return _pCpu.getIdleCpu();
-}
