@@ -1,5 +1,7 @@
 #ifndef CPUMODULE_HPP
 #define CPUMODULE_HPP
+
+#include <stdint.h>
 #include "IMonitorModule.hpp"
 
 class CPUModule : public IMonitorModule {
