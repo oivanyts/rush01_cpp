@@ -114,22 +114,24 @@ void                NcursesOut::printStatic() {
     mvwprintw(mainWin, 16, size, "%i", this->_pCpu.getCore());
 }
 void                    NcursesOut::printRam() {
+
+    const float divider = 1000000000.0f;
     int size = 25;
 
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 20, 1, "Total memory: ");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 20, size, "%llu MB", this->_pRam.getUTotalMemory());
+    mvwprintw(mainWin, 20, size, "%.2f GB", this->_pRam.getUTotalMemory() / divider );
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 22, 1, "Used memory:");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 22, size, "%llu MB", this->_pRam.getUsedMemoty());
+    mvwprintw(mainWin, 22, size, "%.2f GB", this->_pRam.getUsedMemoty() / divider );
     wattron(mainWin, COLOR_PAIR(134));
 
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 24, 1, "Free memory:");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 24, size, "%llu MB", this->_pRam.getFreeMemory());
+    mvwprintw(mainWin, 24, size, "%.2f GB", this->_pRam.getFreeMemory() / divider );
     wattron(mainWin, COLOR_PAIR(134));
 
     std::string tmp = this->_pDate.getInfo();
