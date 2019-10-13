@@ -2,8 +2,6 @@
 
 NcursesOut::NcursesOut()
 {
-    int x;
-    int y;
     initscr();
     cbreak(); 
     noecho(); 
@@ -17,10 +15,8 @@ NcursesOut::NcursesOut()
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     init_pair(2, COLOR_BLUE, COLOR_BLACK);
     init_pair(3, COLOR_CYAN, COLOR_BLACK);
-    getmaxyx(stdscr, y, x);
+    getmaxyx(stdscr, y_wmax, x_wmax);
 
-    this->y_wmax = y;
-    this->x_wmax = x;
     mainWin = newwin(this->y_wmax - 1, this->x_wmax - 1, 0, 0);
     printStatic();
 }
