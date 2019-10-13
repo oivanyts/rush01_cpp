@@ -40,6 +40,6 @@ MType DateTimeModule::getInfo() {
     strftime(buffer,sizeof(buffer),"%H:%M:%S",timeinfo);
     std::string tmp1(buffer);
     _time = tmp1;
-    return tmp;
+    return tmp + " " + tmp1;
 }
 
