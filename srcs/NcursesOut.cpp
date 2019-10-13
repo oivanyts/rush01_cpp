@@ -121,36 +121,34 @@ void                    NcursesOut::printRam() {
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 20, 1, "Total memory: ");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 20, size, "%.2f GB", this->_pRam.getUTotalMemory() / divider );
+    mvwprintw(mainWin, 20, size, "%.2f GB", _pRam.getUTotalMemory() / divider );
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 22, 1, "Used memory:");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 22, size, "%.2f GB", this->_pRam.getUsedMemoty() / divider );
+    mvwprintw(mainWin, 22, size, "%.2f GB", _pRam.getUsedMemoty() / divider );
     wattron(mainWin, COLOR_PAIR(134));
 
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 24, 1, "Free memory:");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 24, size, "%.2f GB", this->_pRam.getFreeMemory() / divider );
+    mvwprintw(mainWin, 24, size, "%.2f GB", _pRam.getFreeMemory() / divider );
     wattron(mainWin, COLOR_PAIR(134));
 
-    std::string tmp = this->_pDate.getInfo();
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 12, 1, "Current date and time: ");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 12, size, tmp.c_str());
+    mvwprintw(mainWin, 12, size, _pDate.getInfo().c_str());
 
-    tmp = this->_pNet.getNet();
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 26, 1, "Network info: ");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 26, size, tmp.c_str());
+    mvwprintw(mainWin, 26, size, _pNet.getNet().c_str());
 
 
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 18, 1, "CPU Idle:");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 18, size, "%.2f%%", this->_pCpu.getIdleCpu());
+    mvwprintw(mainWin, 18, size, "%.2f%%", _pCpu.getIdleCpu());
     wattron(mainWin, COLOR_PAIR(134));
 
     wrefresh(mainWin);
