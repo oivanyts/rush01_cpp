@@ -65,47 +65,6 @@ void    NcursesOut::printOut()
     printStatic();
     printRam();
 }
-void                    NcursesOut::printRam() {
-    int size = 25;
-
-    wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 22, 1, "Total memory: ");
-    wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 22, size, "%llu MB", this->_pRam.getUTotalMemory());
-    wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 24, 1, "Used memory:");
-    wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 24, size, "%llu MB", this->_pRam.getUsedMemoty());
-    wattron(mainWin, COLOR_PAIR(134));
-
-    wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 26, 1, "Free memory:");
-    wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 26, size, "%llu MB", this->_pRam.getFreeMemory());
-    wattron(mainWin, COLOR_PAIR(134));
-
-    std::string tmp = this->_pDate.getInfo();
-    wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 12, 1, "Current date and time: ");
-    wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 12, size, tmp.c_str());
-
-    tmp = this->_pNet.getNet();
-    wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 28, 1, "Network info: ");
-    wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 28, size, tmp.c_str());
-
-
-    wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 20, 1, "CPU Idle:");
-    wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 20, size, "%.2f%%", this->_pCpu.getIdleCpu());
-    wattron(mainWin, COLOR_PAIR(134));
-
-    wrefresh(mainWin);
-}
-
 void                NcursesOut::printStatic() {
     std::string tmp;
     int size = 25;
@@ -145,19 +104,52 @@ void                NcursesOut::printStatic() {
 
     tmp = this->_pCpu.getModel();
     wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 14, 1, "CPU model: ");
+    mvwprintw(mainWin, 14, 1, "CPU : ");
     wattroff(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 14, size, tmp.c_str());
 
-    tmp = std::to_string(this->_pCpu.hatHW());
     wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 16, 1, "Clock speed: ");
+    mvwprintw(mainWin, 16, 1, "CPU cores : ");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 16, size, tmp.c_str());
-
-    wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 18, 1, "Count cores: ");
-    wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 18, size, "%i", this->_pCpu.getCore());
+    mvwprintw(mainWin, 16, size, "%i", this->_pCpu.getCore());
 }
+void                    NcursesOut::printRam() {
+    int size = 25;
 
+    wattron(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 20, 1, "Total memory: ");
+    wattroff(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 20, size, "%llu MB", this->_pRam.getUTotalMemory());
+    wattron(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 22, 1, "Used memory:");
+    wattroff(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 22, size, "%llu MB", this->_pRam.getUsedMemoty());
+    wattron(mainWin, COLOR_PAIR(134));
+
+    wattron(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 24, 1, "Free memory:");
+    wattroff(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 24, size, "%llu MB", this->_pRam.getFreeMemory());
+    wattron(mainWin, COLOR_PAIR(134));
+
+    std::string tmp = this->_pDate.getInfo();
+    wattron(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 12, 1, "Current date and time: ");
+    wattroff(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 12, size, tmp.c_str());
+
+    tmp = this->_pNet.getNet();
+    wattron(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 26, 1, "Network info: ");
+    wattroff(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 26, size, tmp.c_str());
+
+
+    wattron(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 18, 1, "CPU Idle:");
+    wattroff(mainWin, COLOR_PAIR(1));
+    mvwprintw(mainWin, 18, size, "%.2f%%", this->_pCpu.getIdleCpu());
+    wattron(mainWin, COLOR_PAIR(134));
+
+    wrefresh(mainWin);
+}
