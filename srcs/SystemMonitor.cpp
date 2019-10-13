@@ -33,6 +33,7 @@ void SystemMonitor::run( eDisplayTarget target )
 
         while ( command != EXIT )
         {
+            mMonitorDisplay->updateInfo();
             mMonitorDisplay->printOut();
             
             command = mMonitorDisplay->getInput();
