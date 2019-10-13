@@ -70,7 +70,8 @@ MType CPUModule::getInfo() {
 	std::stringstream ss;
 
     ss << "CPU model: " << _modelReal << std::endl
-		<< "Clock speed: " << static_cast<float>(_hw)/1000000000.0 << std::endl
+		<< "Clock speed: " << (static_cast<float>(_hw)/1000000000.0) <<
+		std::endl
         << "Count cores: " << _core << std::endl;
 	return ss.str();
    
