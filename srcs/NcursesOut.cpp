@@ -65,6 +65,7 @@ void NcursesOut::updateInfo()
 }
 void    NcursesOut::printOut()
 {
+    werase(mainWin);
     printStatic();
     printRam();
 }
@@ -107,7 +108,6 @@ void                    NcursesOut::printRam() {
     wattron(mainWin, COLOR_PAIR(134));
 
     wrefresh(mainWin);
-    werase(mainWin);
 }
 
 void                NcursesOut::printStatic() {
@@ -119,9 +119,9 @@ void                NcursesOut::printStatic() {
 
     tmp = this->_pHost.getHost();
     wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 1, 1, "Host: ");
+    mvwprintw(mainWin, 2, 1, "Host: ");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 1, size, tmp.c_str());
+    mvwprintw(mainWin, 2, size, tmp.c_str());
 
     tmp = this->_pHost.getUser();
     wattron(mainWin, COLOR_PAIR(1));
