@@ -13,7 +13,7 @@ HEADERS    := $(addprefix $(SRCS_DIR)/, $(HEADERS))
 
 SRCS        = main.cpp CPUModule.cpp DateTimeModule.cpp HostnameModule.cpp
 SRCS       += NetworkModule.cpp OSInfoModule.cpp RAMModule.cpp NcursesOut.cpp
-SRCS       += IMonitorDisplay.cpp SystemMonitor.cpp
+SRCS       += SystemMonitor.cpp
 
 OBJS        = $(SRCS:.cpp=.o)
 
