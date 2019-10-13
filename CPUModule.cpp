@@ -21,7 +21,7 @@ CPUModule::CPUModule() {
     {
         throw std::runtime_error("Fail to get clock speed");
     }
-
+    _hw /= 1000000;
     size = sizeof(_core);
     if (sysctlbyname("machdep.cpu.core_count", &_core, &size, NULL, 0) < 0)
     {
@@ -70,7 +70,7 @@ MType CPUModule::getInfo() {
 	std::stringstream ss;
 
     ss << "CPU model: " << _modelReal << std::endl
-		<< "Clock speed: " << (static_cast<float>(_hw)/1000000000.0) <<
+		<< "Clock speed: " << (static_cast<float>(_hw)/1000.0) <<
 		std::endl
         << "Count cores: " << _core << std::endl;
 	return ss.str();
