@@ -8,12 +8,12 @@ OBJS_DIR    = ./objs
 
 HEADERS     = CPUModule.hpp DateTimeModule.hpp HostnameModule.hpp
 HEADERS    += NetworkModule.hpp OSInfoModule.hpp RAMModule.hpp NcursesOut.hpp
-HEADERS    += IMonitorDisplay.hpp IMonitorModule.hpp
+HEADERS    += IMonitorDisplay.hpp IMonitorModule.hpp SystemMonitor.hpp
 HEADERS    := $(addprefix $(SRCS_DIR)/, $(HEADERS))
 
 SRCS        = main.cpp CPUModule.cpp DateTimeModule.cpp HostnameModule.cpp
 SRCS       += NetworkModule.cpp OSInfoModule.cpp RAMModule.cpp NcursesOut.cpp
-SRCS       += IMonitorDisplay.cpp
+SRCS       += IMonitorDisplay.cpp SystemMonitor.cpp
 
 OBJS        = $(SRCS:.cpp=.o)
 
