@@ -1,21 +1,8 @@
 #include <iostream>
-#include "HostnameModule.hpp"
-#include "OSInfoModule.hpp"
-#include "DateTimeModule.hpp"
-#include "CPUModule.hpp"
-#include "RAMModule.hpp"
-#include "NetworkModule.hpp"
+
+#include "Common.hpp"
 #include "NcursesOut.hpp"
 #include "IMonitorDisplay.hpp"
-#include "Common.hpp"
-#include "QTOut.hpp"
-
-#include <unistd.h>
-#include <sys/types.h>
-#include <iostream>
-#include <sys/param.h>
-#include <sys/sysctl.h>
-#include <ncurses.h>
 
 int main() {
 	IMonitorDisplay *visualMode = new NcursesOut();
