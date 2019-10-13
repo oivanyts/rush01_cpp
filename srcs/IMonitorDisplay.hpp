@@ -1,13 +1,6 @@
 #ifndef IMONITORDISPLAY_HPP
 #define IMONITORDISPLAY_HPP
 
-#include <string>
-#include <iostream>
-# include <ctime>
-# include <sstream>
-# include <string>
-# include <vector>
-# include <ncurses.h>
 #include "DateTimeModule.hpp"
 #include "HostnameModule.hpp"
 #include "NetworkModule.hpp"
@@ -16,23 +9,16 @@
 #include "CPUModule.hpp"
 #include "Common.hpp"
 
-class IMonitorDisplay {
-public:
-    IMonitorDisplay();
-	Command    getInput() ;
-	void updateInfo();
-	IMonitorDisplay(const IMonitorDisplay &copy);
-	IMonitorDisplay &operator = (const IMonitorDisplay &over);
+class IMonitorDisplay
+{
 
-	virtual std::string getHostStr() const = 0;
-	virtual std::string getOsStr() = 0 ;
-	virtual std::string getCpuModel() const = 0;
-	virtual std::string getDateTime() const = 0;
-	virtual std::string getRamTotal() const = 0;
-	virtual std::string getNet() const  = 0;
-	virtual float getCpuIdle() const  = 0;
+public:
 	virtual ~IMonitorDisplay() {}
-	virtual void 	printOut() {};
+
+	virtual Command getInput() = 0;
+	virtual void updateInfo() = 0;
+	virtual void printOut() = 0;
+
 protected:
     OSInfoModule _pOs;
     HostnameModule _pHost;
