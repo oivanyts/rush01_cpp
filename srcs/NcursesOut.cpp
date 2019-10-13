@@ -103,7 +103,7 @@ void                    NcursesOut::printRam() {
     wattron(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 20, 1, "CPU Idle:");
     wattroff(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 20, size, "%f", this->_pCpu.getIdleCpu());
+    mvwprintw(mainWin, 20, size, "%.2f%%", this->_pCpu.getIdleCpu());
     wattron(mainWin, COLOR_PAIR(134));
 
     wrefresh(mainWin);
@@ -155,7 +155,7 @@ void                NcursesOut::printStatic() {
 
     tmp = std::to_string(this->_pCpu.hatHW());
     wattron(mainWin, COLOR_PAIR(1));
-    mvwprintw(mainWin, 16, 1, "Clock speed:: ");
+    mvwprintw(mainWin, 16, 1, "Clock speed: ");
     wattroff(mainWin, COLOR_PAIR(1));
     mvwprintw(mainWin, 16, size, tmp.c_str());
 
